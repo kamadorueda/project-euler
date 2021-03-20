@@ -1,5 +1,9 @@
 let
-  nixpkgs = import <nixpkgs> { };
+  nixpkgsSource = (import <nixpkgs> { }).fetchzip {
+    url = "https://github.com/nixos/nixpkgs/archive/932941b79c3dbbef2de9440e1631dfec43956261.tar.gz";
+    sha256 = "F5+ESAMGMumeYuBx7qi9YnE9aeRhEE9JTjtvTb30lrQ=";
+  };
+  nixpkgs = import nixpkgsSource { };
 
   buildSolution = num: script: nixpkgs.stdenv.mkDerivation {
     name = "problem-${num}";
