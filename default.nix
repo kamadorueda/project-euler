@@ -21,7 +21,12 @@ let
     buildInputs = [ nixpkgs.ghc ];
     inherit num script;
   };
+
+  buildSolutions = solutions: script: buildSolution {
+    num = builtins.toString (1 + (builtins.length solutions));
+    inherit script;
+  };
 in
-{
-  problem1 = buildSolution "1" ./0001.multiples-of-3-and-5.hs;
-}
+builtins.foldl' buildSolutions [ ] [
+  ./0001.multiples-of-3-and-5.hs
+]
