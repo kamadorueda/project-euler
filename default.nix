@@ -12,21 +12,18 @@ let
 
       echo
       echo ===
-      echo "Problem statement: https://projecteuler.net/problem=${num}"
-      echo ===
-      timeout 60 ghci $script |& tee $out
+      echo 'Problem: https://projecteuler.net/problem=${num}'
+      echo 'Compiling...'
+      ghc $script -o main -v0
+      echo 'Running...'
+      timeout 60 ./main > $out
       echo ===
       echo
     '';
     buildInputs = [ nixpkgs.ghc ];
     inherit num script;
   };
-
-  buildSolutions = solutions: script: buildSolution {
-    num = builtins.toString (1 + (builtins.length solutions));
-    inherit script;
-  };
 in
-builtins.foldl' buildSolutions [ ] [
-  ./0001.multiples-of-3-and-5.hs
-]
+{
+  problem-1 = buildSolution "1" ./0001.multiples-of-3-and-5.hs;
+}
