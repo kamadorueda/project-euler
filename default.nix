@@ -14,16 +14,18 @@ let
       echo ===
       echo 'Problem: https://projecteuler.net/problem=${num}'
       echo 'Compiling...'
-      ghc $script -o main -v0
+      ghc $lib $script -o main -v0
       echo 'Running...'
       timeout 60 ./main > $out
       echo ===
       echo
     '';
     buildInputs = [ nixpkgs.ghc ];
+    lib = ./lib.hs;
     inherit num script;
   };
 in
 {
   problem-1 = buildSolution "1" ./0001.multiples-of-3-and-5.hs;
+  problem-2 = buildSolution "2" ./0002.even-fibonacci-numbers.hs;
 }
