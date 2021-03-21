@@ -20,8 +20,12 @@ let
       echo ===
       echo
     '';
-    buildInputs = [ nixpkgs.ghc ];
-    lib = ./lib.hs;
+    buildInputs = [
+      (nixpkgs.ghc.withPackages (p: with p; [
+        primes
+      ]))
+    ];
+    lib = ./Lib.hs;
     inherit num script;
   };
 in

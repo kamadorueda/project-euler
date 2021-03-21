@@ -5,5 +5,6 @@
 -- exceed four million, find the sum of the even-valued terms.
 import Lib
 
+main :: IO ()
 main =
-  print (sum [n | n <- takeWhile (< 4000000) Lib.fibonacciSequence, even n])
+  print (sum [n | n <- takeWhile (< 4000000) fibonacciSequence, even n])
