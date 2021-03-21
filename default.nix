@@ -28,4 +28,5 @@ in
 {
   problem-1 = buildSolution "1" ./0001.multiples-of-3-and-5.hs;
   problem-2 = buildSolution "2" ./0002.even-fibonacci-numbers.hs;
+  problem-3 = buildSolution "3" ./0003.largest-prime-factor.hs;
 }
