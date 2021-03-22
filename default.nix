@@ -5,14 +5,13 @@ let
   };
   nixpkgs = import nixpkgsSource { };
 
-  buildSolution = num: script: nixpkgs.stdenv.mkDerivation {
-    name = "problem-${num}";
+  buildSolution = script: nixpkgs.stdenv.mkDerivation {
+    name = "solution";
     builder = builtins.toFile "builder" ''
       source $stdenv/setup
 
       echo
       echo ===
-      echo 'Problem: https://projecteuler.net/problem=${num}'
       echo 'Compiling...'
       ghc $lib $script -o main -v0
       echo 'Running...'
@@ -25,12 +24,12 @@ let
         primes
       ]))
     ];
-    lib = ./0000-library.hs;
-    inherit num script;
+    lib = ./solutions/0000-library.hs;
+    inherit script;
   };
 in
-{
-  problem-1 = buildSolution "1" ./0001-multiples-of-3-and-5.hs;
-  problem-2 = buildSolution "2" ./0002-even-fibonacci-numbers.hs;
-  problem-3 = buildSolution "3" ./0003-largest-prime-factor.hs;
+builtins.mapAttrs (name: buildSolution) {
+  solution-1 = ./solutions/0001-multiples-of-3-and-5.hs;
+  solution-2 = ./solutions/0002-even-fibonacci-numbers.hs;
+  solution-3 = ./solutions/0003-largest-prime-factor.hs;
 }

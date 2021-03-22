@@ -3,9 +3,10 @@
 function main {
   cat $( \
     nix-build \
-    --attr "problem-${1}" \
-    --option sandbox true \
+    --attr "solution-${1}" \
     --no-out-link \
+    --option sandbox true \
+    --show-trace \
     default.nix \
   )
 }
