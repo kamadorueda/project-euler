@@ -6,5 +6,16 @@ fibonacciSequence :: [Integer]
 fibonacciSequence =
   1 : 2 : zipWith (+) fibonacciSequence (tail fibonacciSequence)
 
+primeFactors :: Integer -> [Integer]
+primeFactors n = factorize n [] primesSequence
+  where
+    factorize :: Integer -> [Integer] -> [Integer] -> [Integer]
+    factorize 1 factors primes = factors
+    factorize n factors primes =
+      let currentPrime:remainingPrimes = primes
+       in if mod n currentPrime == 0
+            then factorize (quot n currentPrime) (currentPrime : factors) primes
+            else factorize n factors remainingPrimes
+
 primesSequence :: [Integer]
 primesSequence = wheelSieve 8
