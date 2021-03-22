@@ -35,4 +35,5 @@ builtins.mapAttrs (name: buildSolution) {
   solution-4 = ./solutions/0004-largest-palindrome-product.hs;
   solution-5 = ./solutions/0005-smallest-multiple.hs;
   solution-6 = ./solutions/0006-sum-square-difference.hs;
+  solution-7 = ./solutions/0007-10001st-prime.hs;
 }
