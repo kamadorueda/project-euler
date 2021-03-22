@@ -37,4 +37,5 @@ builtins.mapAttrs (name: buildSolution) {
   solution-6 = ./solutions/0006-sum-square-difference.hs;
   solution-7 = ./solutions/0007-10001st-prime.hs;
   solution-8 = ./solutions/0008-largest-product-in-a-series.hs;
+  solution-9 = ./solutions/0009-special-pythagorean-triplet.hs;
 }
