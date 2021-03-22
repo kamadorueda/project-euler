@@ -2,9 +2,6 @@
 -- What is the largest prime factor of the number 600851475143 ?
 import Lib
 
-target :: Integer
-target = 600851475143
-
 main :: IO ()
 main =
   print
@@ -13,3 +10,6 @@ main =
        | p <- takeWhile (\n -> n * n < target) primesSequence
        , mod target p == 0
        ])
+
+target :: Integer
+target = 600851475143

@@ -6,5 +6,4 @@
 import Lib
 
 main :: IO ()
-main =
-  print (sum [n | n <- takeWhile (< 4000000) fibonacciSequence, even n])
+main = print (sum [n | n <- takeWhile (< 4000000) fibonacciSequence, even n])

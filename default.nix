@@ -32,4 +32,5 @@ builtins.mapAttrs (name: buildSolution) {
   solution-1 = ./solutions/0001-multiples-of-3-and-5.hs;
   solution-2 = ./solutions/0002-even-fibonacci-numbers.hs;
   solution-3 = ./solutions/0003-largest-prime-factor.hs;
+  solution-4 = ./solutions/0004-largest-palindrome-product.hs;
 }
