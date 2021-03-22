@@ -2,6 +2,8 @@
 -- The largest palindrome made from the product of two 2-digit numbers is
 -- 9009 = 91 × 99.
 -- Find the largest palindrome made from the product of two 3-digit numbers.
+import Lib
+
 main :: IO ()
 main =
   print
@@ -19,10 +21,3 @@ isPalindrome :: Integral a => a -> Bool
 isPalindrome n =
   let digits = numberAsList [n]
    in digits == reverse digits
-
-numberAsList :: Integral a => [a] -> [a]
-numberAsList (n:ns) =
-  let carry = quot n 10
-   in if carry > 10
-        then numberAsList (carry : mod n 10 : ns)
-        else carry : mod n 10 : ns

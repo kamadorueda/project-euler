@@ -6,6 +6,13 @@ fibonacciSequence :: [Integer]
 fibonacciSequence =
   1 : 2 : zipWith (+) fibonacciSequence (tail fibonacciSequence)
 
+numberAsList :: Integral a => [a] -> [a]
+numberAsList (n:ns) =
+  let list = quot n 10 : mod n 10 : ns
+   in if head list > 10
+        then numberAsList list
+        else list
+
 primeFactors :: Integer -> [Integer]
 primeFactors n = factorize n [] primesSequence
   where
